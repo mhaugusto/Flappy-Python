@@ -11,7 +11,7 @@ IMGS_PLAYER = [
     pygame.transform.scale2x(pygame.image.load(os.path.join('imgs', 'bolinha4.png'))),
     pygame.transform.scale2x(pygame.image.load(os.path.join('imgs', 'bolinha5.png')))
 ]
-IMG_BG = pygame.transform.scale2x(pygame.image.load(os.path.join('imgs', 'bg.png')))
+IMG_BG = pygame.image.load(os.path.join('imgs', 'bg.png'))
 IMG_MENU = pygame.image.load(os.path.join('imgs', 'menu.png'))
 IMG_PAUSE = pygame.image.load(os.path.join('imgs', 'pause.png'))
 IMG_RESTART = pygame.image.load(os.path.join('imgs', 'restart.png'))
@@ -28,9 +28,6 @@ FONTE_PONTOS = pygame.font.SysFont('arial', 30)
 
 class Player:
     IMGS = IMGS_PLAYER
-    # animações da rotação
-    ROTACAO_MAXIMA = 0
-    VELOCIDADE_ROTACAO = 0
     TEMPO_ANIMACAO = 6
 
     def __init__(self, x, y):
@@ -60,14 +57,6 @@ class Player:
             deslocamento -= 2
 
         self.y += deslocamento
-
-        # o angulo do passaro
-        if deslocamento < 0 or self.y < (self.altura + 50):
-            if self.angulo < self.ROTACAO_MAXIMA:
-                self.angulo = self.ROTACAO_MAXIMA
-        else:
-            if self.angulo > -90:
-                self.angulo -= self.VELOCIDADE_ROTACAO
 
     def desenhar(self, tela):
         # definir qual imagem do jogador vai usar
@@ -180,11 +169,9 @@ def desenhar_tela(tela, bolas, canos, chao, pontos):
     for cano in canos:
          cano.desenhar(tela)
 
-    texto = FONTE_PONTOS.render(f"Pontuação: {pontos}", 1, (255, 255, 255))
+    texto = FONTE_PONTOS.render(f"Pontuação: {pontos}", 1, (0, 0, 0))
     tela.blit(texto, (WINDOW_WIDHT - 10 - texto.get_width(), 10))
     chao.desenhar(tela)
-    # texto2 = FONTE_PONTOS.render(f"Melhor pontuação: {recorde}", 1, (255, 255, 255))
-    # tela.blit(texto2, (WINDOW_WIDHT - 10 - texto2.get_width(), 50))
     pygame.display.update()
 
 
@@ -274,18 +261,6 @@ def play():
             if not is_alive:
                 tela.blit(IMG_DEATH, (45, 300))
                 pygame.display.update()
-
-
-            # if pontos > recorde:
-            #     recorde = pontos
-            #     texto2 = FONTE_PONTOS.render(f"Melhor pontuação: {recorde}", 1, (255, 255, 255))
-            #     tela.blit(texto2, (WINDOW_WIDHT - 10 - texto2.get_width(), 50))
-            #     pygame.display.update()
-
-
-
-
-
 
 
 def main():
