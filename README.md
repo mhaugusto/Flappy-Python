@@ -1,4 +1,4 @@
-Flappy Python - README
+Flappy Python
 
 This is a simple implementation of the popular game Flappy Bird using Pygame. The objective of the game is to control a bird and navigate it through a series of pipes without colliding with them.
 
@@ -13,14 +13,14 @@ The game displays the player's score on the screen.
 The player can restart the game by pressing the "R" key after a game over.
 Dependencies:
 
-Python 3.x
-Pygame
+Python 3.x;
+Pygame.
 How to Run:
 
 Ensure that Python and Pygame are installed on your system.
 Clone this repository or download the source code files.
 Open a terminal or command prompt and navigate to the project directory.
-Run the command python flappy_bird.py to start the game.
+Run the command python FlappyBolinha.py to start the game.
 Controls:
 
 Press the spacebar to make the bird flap its wings and ascend.
